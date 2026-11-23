@@ -224,6 +224,49 @@ export async function DataAiSettingsPage({ ctx }: { ctx: OrgContext }) {
       </section>
 
       <section className="flex flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 className="m-0 text-[14px] font-semibold text-ink">Outbound email (Resend)</h2>
+            <p className="m-0 mt-1 text-[12.5px] text-muted">
+              Sends Team invitations and PDF attachments for Sales invoices, Quick invoices, and Quotes from{" "}
+              <code className="num text-[12px]">{data.emailFrom}</code>.
+            </p>
+          </div>
+          <span className={data.emailConfigured ? "chip pos" : "chip"}>
+            {data.emailConfigured ? "Configured" : "Not configured"}
+          </span>
+        </div>
+        {data.emailLogs.length > 0 && (
+          <div className="overflow-x-auto rounded-[var(--radius)] border border-border">
+            <table className="w-full border-collapse text-left text-[12.5px]" data-testid="email-logs-table">
+              <thead>
+                <tr className="bg-surface-2/60 text-[11px] font-semibold tracking-[0.04em] text-muted uppercase">
+                  <th className="px-3 py-2">Recipient</th>
+                  <th className="px-3 py-2">Type</th>
+                  <th className="px-3 py-2">Subject</th>
+                  <th className="px-3 py-2 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.emailLogs.map((e) => (
+                  <tr key={e.id} className="border-t border-border">
+                    <td className="px-3 py-2 text-ink">{e.recipientEmail}</td>
+                    <td className="px-3 py-2 whitespace-nowrap text-muted">{e.docType.replace("_", " ")}</td>
+                    <td className="px-3 py-2 text-ink-2">{e.subject}</td>
+                    <td className="px-3 py-2 text-right whitespace-nowrap">
+                      <span className={e.status === "sent" ? "chip pos" : e.status === "failed" ? "chip neg" : "chip warn"}>
+                        {e.status === "sent" ? "Sent" : e.status === "failed" ? "Failed" : "Skipped"}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+
+      <section className="flex flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
         <div>
           <h2 className="m-0 text-[14px] font-semibold text-ink">Kira memory</h2>
           <p className="m-0 mt-1 text-[12.5px] text-muted">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { accountOptions, todayMY } from "@/features/books/load";
 import { fromSen, rm } from "@/features/books/money";
+import { EmailDocumentButton } from "@/shared/email/email-document-button";
 import { first, type SearchParams } from "@/shared/i18n";
 import type { OrgContext } from "@/shared/org-context";
 import { createSupabaseServerClient } from "@/shared/supabase/server";
@@ -177,10 +178,15 @@ export async function QuoteDetailPage({ ctx, id }: { ctx: OrgContext; id: string
           </span>
         }
         actions={
-          <a href={`${base}/quotes/${q.id}/pdf`} className={buttonClass("secondary")}>
-            <Download size={14} aria-hidden="true" />
-            {qt(lang, "quotes.detail.downloadPdf")}
-          </a>
+          <>
+            <a href={`${base}/quotes/${q.id}/pdf`} className={buttonClass("secondary")}>
+              <Download size={14} aria-hidden="true" />
+              {qt(lang, "quotes.detail.downloadPdf")}
+            </a>
+            {ctx.role !== "viewer" && q.status !== "void" && (
+              <EmailDocumentButton orgSlug={ctx.org.slug} docType="quote" docId={q.id} docNumber={q.number} />
+            )}
+          </>
         }
       />
       <div className="card grid grid-cols-2 gap-4 p-4 sm:grid-cols-4" data-testid="quote-summary">

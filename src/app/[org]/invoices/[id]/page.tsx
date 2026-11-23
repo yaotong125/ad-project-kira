@@ -16,6 +16,7 @@ import type { FormLine } from "@/features/invoices/lines";
 import { loadInvoice } from "@/features/invoices/load";
 import { loadInvoiceMyInvois } from "@/features/myinvois/load";
 import { InvoiceMyInvoisPanel } from "@/features/myinvois/myinvois-client";
+import { EmailDocumentButton } from "@/shared/email/email-document-button";
 import { first, type SearchParams } from "@/shared/i18n";
 import { loadOrgContext } from "@/shared/org-context";
 import { createSupabaseServerClient } from "@/shared/supabase/server";
@@ -153,6 +154,15 @@ export default async function Page({ params, searchParams }: { params: Promise<{
               <Download size={14} aria-hidden="true" />
               {t("invoices.detail.downloadPdf")}
             </a>
+            {canEdit && inv.status !== "void" && (
+              <EmailDocumentButton
+                orgSlug={ctx.org.slug}
+                docType="invoice"
+                docId={inv.id}
+                docNumber={inv.invoice_number}
+                defaultEmail={c.email ?? ""}
+              />
+            )}
             {canEdit && inv.status === "draft" && (
               <Link href={`${base}/invoices/${inv.id}?edit=1`} className={buttonClass("secondary")}>
                 {t("invoices.detail.edit")}

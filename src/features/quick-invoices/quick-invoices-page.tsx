@@ -231,6 +231,7 @@ export async function QuickInvoiceDetailPage({ ctx, id }: { ctx: OrgContext; id:
         orgSlug={ctx.org.slug}
         id={qi.id}
         invoiceNumber={qi.invoiceNumber}
+        customerEmail={qi.customerEmail ?? ""}
         status={qi.status}
         canEdit={canEdit}
         linkedInvoiceId={qi.linkedInvoiceId}

@@ -32,6 +32,15 @@ export type AutomationRunRow = {
   ranAt: string;
 };
 
+export type EmailLogRow = {
+  id: string;
+  docType: "team_invite" | "invoice" | "quick_invoice" | "quote";
+  recipientEmail: string;
+  subject: string;
+  status: "sent" | "skipped" | "failed";
+  sentAt: string;
+};
+
 export const WEBHOOK_EVENTS = [
   { id: "invoice.recorded", label: "Invoice recorded" },
   { id: "bill.recorded", label: "Bill recorded" },

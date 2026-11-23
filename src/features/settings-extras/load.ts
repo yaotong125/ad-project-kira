@@ -1,6 +1,7 @@
 import "server-only";
+import { configuredFromAddress, isEmailConfigured } from "@/shared/email/mailer";
 import type { createSupabaseServerClient } from "@/shared/supabase/server";
-import type { ApiKeyRow, ApiKeyScope, AutomationRunRow, WebhookRow } from "./types";
+import type { ApiKeyRow, ApiKeyScope, AutomationRunRow, EmailLogRow, WebhookRow } from "./types";
 
 type Supabase = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 
@@ -40,7 +41,7 @@ export async function loadWebhooks(supabase: Supabase, orgId: string): Promise<W
 }
 
 export async function loadDataAiSettings(supabase: Supabase, orgId: string) {
-  const [{ data: org }, { count: chatCount }, runsRes] = await Promise.all([
+  const [{ data: org }, { count: chatCount }, runsRes, emailRes] = await Promise.all([
     supabase.from("organizations").select("ai_memory_enabled, auto_run_enabled").eq("id", orgId).single(),
     supabase.from("chat_conversations").select("id", { count: "exact", head: true }).eq("org_id", orgId),
     supabase
@@ -48,6 +49,12 @@ export async function loadDataAiSettings(supabase: Supabase, orgId: string) {
       .select("id, trigger_source, as_of_date, invoices_generated, bills_generated, depreciation_posted, prepaids_posted, status, error_message, ran_at")
       .eq("org_id", orgId)
       .order("ran_at", { ascending: false })
+      .limit(10),
+    supabase
+      .from("org_email_logs")
+      .select("id, doc_type, recipient_email, subject, status, sent_at")
+      .eq("org_id", orgId)
+      .order("sent_at", { ascending: false })
       .limit(10),
   ]);
   const automationRuns: AutomationRunRow[] = (runsRes.data ?? []).map((r) => ({
@@ -62,11 +69,22 @@ export async function loadDataAiSettings(supabase: Supabase, orgId: string) {
     errorMessage: (r.error_message as string | null) ?? null,
     ranAt: r.ran_at as string,
   }));
+  const emailLogs: EmailLogRow[] = (emailRes.data ?? []).map((e) => ({
+    id: e.id as string,
+    docType: e.doc_type as EmailLogRow["docType"],
+    recipientEmail: e.recipient_email as string,
+    subject: e.subject as string,
+    status: e.status === "sent" ? "sent" : e.status === "failed" ? "failed" : "skipped",
+    sentAt: e.sent_at as string,
+  }));
   return {
     aiMemoryEnabled: org?.ai_memory_enabled !== false,
     autoRunEnabled: (org as { auto_run_enabled?: boolean } | null)?.auto_run_enabled !== false,
     chatCount: chatCount ?? 0,
     automationRuns,
+    emailConfigured: isEmailConfigured(),
+    emailFrom: configuredFromAddress(),
+    emailLogs,
   };
 }
 

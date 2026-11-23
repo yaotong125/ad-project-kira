@@ -1,8 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { siteOrigin } from "@/shared/auth/origin";
+import { sendEmail } from "@/shared/email/mailer";
+import { teamInviteEmail } from "@/shared/email/templates";
 import { createSupabaseServerClient } from "@/shared/supabase/server";
-import type { AssignableRole } from "./types";
+import { ROLE_META, type AssignableRole } from "./types";
 
 const MESSAGES: Record<string, string> = {
   unauthenticated: "Your session expired. Sign in again.",
@@ -33,7 +36,18 @@ export async function inviteMemberAction(
   orgSlug: string,
   email: string,
   role: AssignableRole,
-): Promise<{ ok: true; id: string; token: string; email: string; role: AssignableRole } | { ok: false; error: string }> {
+): Promise<
+  | {
+      ok: true;
+      id: string;
+      token: string;
+      email: string;
+      role: AssignableRole;
+      emailStatus: "sent" | "skipped" | "failed";
+      emailMessage?: string;
+    }
+  | { ok: false; error: string }
+> {
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.rpc("invite_org_member", {
     p_slug: orgSlug,
@@ -41,15 +55,68 @@ export async function inviteMemberAction(
     p_role: role,
   });
   if (error) return { ok: false, error: mapErr(error.message) };
+
+  const r = (data ?? {}) as Record<string, unknown>;
+  const id = String(r.id ?? "");
+  const token = String(r.token ?? "");
+  const invitedEmail = String(r.email ?? email);
+  const invitedRole = (r.role as AssignableRole) ?? role;
+
+  let emailStatus: "sent" | "skipped" | "failed" = "skipped";
+  let emailMessage: string | undefined;
+
+  if (token) {
+    const [{ data: org }, { data: authData }, origin] = await Promise.all([
+      supabase.from("organizations").select("legal_name").eq("slug", orgSlug).maybeSingle(),
+      supabase.auth.getUser(),
+      siteOrigin(),
+    ]);
+    const inviteUrl = `${origin}/invite/${token}`;
+    const tpl = teamInviteEmail({
+      orgName: org?.legal_name ?? orgSlug,
+      inviterEmail: authData.user?.email ?? "A team admin",
+      roleLabel: ROLE_META[invitedRole]?.label ?? invitedRole,
+      inviteUrl,
+    });
+    const sent = await sendEmail({
+      to: invitedEmail,
+      subject: tpl.subject,
+      html: tpl.html,
+      text: tpl.text,
+      replyTo: authData.user?.email ?? undefined,
+    });
+    emailStatus = sent.status;
+    emailMessage = sent.status === "failed" ? sent.error : sent.status === "skipped" ? sent.reason : undefined;
+
+    await supabase
+      .rpc("log_org_email", {
+        p_slug: orgSlug,
+        p_doc_type: "team_invite",
+        p_doc_id: id,
+        p_recipient_email: invitedEmail,
+        p_subject: tpl.subject,
+        p_provider: "resend",
+        p_provider_message_id: sent.status === "sent" ? sent.messageId : null,
+        p_status: sent.status,
+        p_error_message: emailMessage ?? null,
+      })
+      .then(
+        () => {},
+        () => {},
+      );
+  }
+
   revalidatePath(`/${orgSlug}/settings/team`);
   revalidatePath(`/${orgSlug}/settings/activity`);
-  const r = (data ?? {}) as Record<string, unknown>;
+  revalidatePath(`/${orgSlug}/settings/data`);
   return {
     ok: true,
-    id: String(r.id ?? ""),
-    token: String(r.token ?? ""),
-    email: String(r.email ?? email),
-    role: (r.role as AssignableRole) ?? role,
+    id,
+    token,
+    email: invitedEmail,
+    role: invitedRole,
+    emailStatus,
+    emailMessage,
   };
 }
 

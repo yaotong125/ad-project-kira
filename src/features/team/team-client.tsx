@@ -19,7 +19,12 @@ export function InviteMemberForm({ orgSlug }: { orgSlug: string }) {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<AssignableRole>("member");
   const [error, setError] = useState<string | null>(null);
-  const [created, setCreated] = useState<{ email: string; token: string; role: AssignableRole } | null>(null);
+  const [created, setCreated] = useState<{
+    email: string;
+    token: string;
+    role: AssignableRole;
+    emailStatus: "sent" | "skipped" | "failed";
+  } | null>(null);
   const [copied, setCopied] = useState(false);
   const [pending, start] = useTransition();
 
@@ -40,7 +45,7 @@ export function InviteMemberForm({ orgSlug }: { orgSlug: string }) {
           start(async () => {
             const r = await inviteMemberAction(orgSlug, email, role);
             if (r.ok) {
-              setCreated({ email: r.email, token: r.token, role: r.role });
+              setCreated({ email: r.email, token: r.token, role: r.role, emailStatus: r.emailStatus });
               setEmail("");
               router.refresh();
             } else {
@@ -103,7 +108,8 @@ export function InviteMemberForm({ orgSlug }: { orgSlug: string }) {
             className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius)] border border-border bg-surface-2 px-3 py-2.5 text-[12.5px]"
           >
             <span className="text-ink">
-              Invited <strong>{created.email}</strong> as{" "}
+              {created.emailStatus === "sent" ? "Invitation emailed to " : "Invited "}
+              <strong>{created.email}</strong> as{" "}
               <strong>{ROLE_META[created.role].label}</strong>. Share link:{" "}
               <code className="num text-[12px] text-brand">/invite/{created.token}</code>
             </span>

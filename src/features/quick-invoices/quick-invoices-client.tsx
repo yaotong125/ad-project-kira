@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
 import { rm } from "@/features/books/money";
+import { EmailDocumentButton } from "@/shared/email/email-document-button";
 import { Button, buttonClass } from "@/shared/ui/button";
 import { Input, Select } from "@/shared/ui/form-controls";
 import {
@@ -482,6 +483,7 @@ export function QuickInvoiceDetailActions({
   orgSlug,
   id,
   invoiceNumber,
+  customerEmail,
   status,
   canEdit,
   linkedInvoiceId,
@@ -490,6 +492,7 @@ export function QuickInvoiceDetailActions({
   orgSlug: string;
   id: string;
   invoiceNumber: string;
+  customerEmail?: string;
   status: "draft" | "sent";
   canEdit: boolean;
   linkedInvoiceId: string | null;
@@ -508,6 +511,15 @@ export function QuickInvoiceDetailActions({
         <a href={`${base}/quick-invoices/${id}/pdf`} className={buttonClass("secondary", "sm")}>
           Download PDF
         </a>
+        {canEdit && (
+          <EmailDocumentButton
+            orgSlug={orgSlug}
+            docType="quick_invoice"
+            docId={id}
+            docNumber={invoiceNumber}
+            defaultEmail={customerEmail ?? ""}
+          />
+        )}
         {canEdit && status === "draft" && (
           <>
             <Link href={`${base}/quick-invoices/${id}/edit`} className={buttonClass("secondary", "sm")}>
