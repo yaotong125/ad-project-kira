@@ -93,6 +93,7 @@ export const NAV: NavGroup[] = [
     items: [
       { path: "reconcile", label: "shell.nav.reconcile", icon: "Landmark" },
       { path: "banking/transfers", label: "shell.nav.transfers", icon: "ArrowLeftRight" },
+      { path: "fx-revaluation", label: { text: "FX revaluation" }, icon: "ArrowRightLeft" },
     ],
   },
   {
@@ -109,6 +110,7 @@ export const NAV: NavGroup[] = [
       { path: "journal-entries", label: "shell.nav.journalEntries", icon: "ScrollText" },
       { path: "accounts", label: "shell.nav.accounts", icon: "BookOpen" },
       { path: "sst", label: { text: "SST" }, icon: "Percent" },
+      { path: "wht", label: { text: "Withholding tax" }, icon: "Percent" },
       { path: "fixed-assets", label: "shell.nav.fixedAssets", icon: "Boxes" },
       { path: "prepaid-amortisations", label: "shell.nav.prepaidAmortisation", icon: "CalendarClock" },
       { path: "periods", label: "shell.nav.financialYear", icon: "CalendarCheck" },
@@ -121,7 +123,7 @@ export const NAV: NavGroup[] = [
 ];
 
 /** Paths (first segment) that have a real page in Kira. */
-export const BUILT_PATHS = new Set(["learn", "inbox", "bills", "journal-entries", "contacts", "invoices", "import", "reconcile", "chat", "reports", "payments-received", "payments-made", "", "ledger", "settings", "accounts", "sst", "periods", "notes", "quotes", "delivery-orders", "recurring-invoices", "recurring-bills", "official-receipts", "expenses", "banking", "fixed-assets", "prepaid-amortisations", "quick-invoices", "migrate", "myinvois", "inventory"]);
+export const BUILT_PATHS = new Set(["learn", "inbox", "bills", "journal-entries", "contacts", "invoices", "import", "reconcile", "chat", "reports", "payments-received", "payments-made", "", "ledger", "settings", "accounts", "sst", "wht", "fx-revaluation", "periods", "notes", "quotes", "delivery-orders", "recurring-invoices", "recurring-bills", "official-receipts", "expenses", "banking", "fixed-assets", "prepaid-amortisations", "quick-invoices", "migrate", "myinvois", "inventory"]);
 
 /** The nav label for a path, used by "coming soon" pages. */
 export function navLabelFor(path: string): NavLabel | undefined {
