@@ -72,6 +72,14 @@ export const AUTH_ERRORS = {
     en: "We could not create your account just now. Please try again in a moment.",
     ms: "Kami tidak dapat mencipta akaun anda sekarang. Sila cuba lagi sebentar nanti.",
   },
+  password_mismatch: {
+    en: "The passwords do not match.",
+    ms: "Kata laluan tidak sepadan.",
+  },
+  reset_failed: {
+    en: "We could not update your password just now. Request a new reset link and try again.",
+    ms: "Kami tidak dapat mengemas kini kata laluan anda sekarang. Minta pautan tetapan semula baharu dan cuba lagi.",
+  },
 } as const satisfies Record<string, Record<Lang, string>>;
 
 export const AUTH_NOTICES = {
@@ -86,6 +94,10 @@ export const AUTH_NOTICES = {
   confirm_sent: {
     en: "If that email needs confirming, a fresh link is on its way.",
     ms: "Jika e-mel itu perlu disahkan, pautan baharu sedang dihantar.",
+  },
+  password_updated: {
+    en: "Your password has been updated. Sign in with your new password.",
+    ms: "Kata laluan anda telah dikemas kini. Log masuk dengan kata laluan baharu anda.",
   },
 } as const satisfies Record<string, Record<Lang, string>>;
 
