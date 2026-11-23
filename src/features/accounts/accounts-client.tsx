@@ -284,7 +284,7 @@ function AccountTableRow({
       <td className={cn(TD, "text-left text-ink")}>
         <select
           aria-label="Statement section"
-          className="rounded-[var(--radius)] border border-border bg-surface px-1.5 py-1 text-[12px] text-ink outline-none focus:border-ink disabled:opacity-50"
+          className="kira-select h-[28px] rounded-[var(--radius)] border border-border bg-surface px-2 text-[12px] text-ink outline-none focus:border-ink disabled:opacity-50"
           value={account.section}
           disabled={!canEdit || pending}
           onChange={(e) =>
@@ -330,7 +330,7 @@ function AccountTableRow({
               <div className="flex flex-wrap items-center justify-end gap-1.5">
                 <select
                   aria-label="New account type"
-                  className="rounded-[var(--radius)] border border-border-strong bg-surface px-2 py-1 text-[12px] text-ink"
+                  className="kira-select h-[28px] rounded-[var(--radius)] border border-border-strong bg-surface px-2 text-[12px] text-ink"
                   value={reType}
                   onChange={(e) => {
                     const next = e.target.value as AccountType;
@@ -347,7 +347,7 @@ function AccountTableRow({
                 {hasSubtype(reType) && (
                   <select
                     aria-label="New account subtype"
-                    className="rounded-[var(--radius)] border border-border-strong bg-surface px-2 py-1 text-[12px] text-ink"
+                    className="kira-select h-[28px] rounded-[var(--radius)] border border-border-strong bg-surface px-2 text-[12px] text-ink"
                     value={reSub}
                     onChange={(e) => setReSub(e.target.value)}
                   >

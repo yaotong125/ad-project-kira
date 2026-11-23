@@ -27,7 +27,7 @@ export function SettingsHeader({ base, legalName, sub, active }: { base: string;
         </div>
       </div>
       <nav aria-label="Settings">
-        <div className="flex gap-1 overflow-x-auto border-b border-border [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex flex-wrap gap-x-1 gap-y-0.5 border-b border-border">
           {SETTINGS_TABS.map((t) => (
             <Link
               key={t.key}

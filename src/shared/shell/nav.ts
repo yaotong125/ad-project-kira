@@ -121,7 +121,7 @@ export const NAV: NavGroup[] = [
 ];
 
 /** Paths (first segment) that have a real page in Kira. */
-export const BUILT_PATHS = new Set(["learn", "inbox", "bills", "journal-entries", "contacts", "invoices", "import", "reconcile", "chat", "reports", "payments-received", "payments-made", "", "ledger", "settings", "accounts", "sst", "periods", "notes", "quotes", "delivery-orders", "recurring-invoices", "recurring-bills", "official-receipts", "expenses", "banking", "fixed-assets", "prepaid-amortisations", "quick-invoices", "migrate"]);
+export const BUILT_PATHS = new Set(["learn", "inbox", "bills", "journal-entries", "contacts", "invoices", "import", "reconcile", "chat", "reports", "payments-received", "payments-made", "", "ledger", "settings", "accounts", "sst", "periods", "notes", "quotes", "delivery-orders", "recurring-invoices", "recurring-bills", "official-receipts", "expenses", "banking", "fixed-assets", "prepaid-amortisations", "quick-invoices", "migrate", "myinvois", "inventory"]);
 
 /** The nav label for a path, used by "coming soon" pages. */
 export function navLabelFor(path: string): NavLabel | undefined {

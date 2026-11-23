@@ -132,6 +132,8 @@ export function sourceHref(slug: string, e: { source: string; sourceId: string |
       return e.sourceId ? `${base}/prepaid-amortisations/${e.sourceId}` : `${base}/prepaid-amortisations`;
     case "opening_balance":
       return `${base}/migrate`;
+    case "inventory":
+      return `${base}/inventory`;
     case "reversal":
       return e.sourceId ? `${base}/ledger/entries/${e.sourceId}` : null;
     default:
@@ -158,4 +160,5 @@ export const SOURCE_LABEL: Record<string, [string, string]> = {
   disposal: ["Asset disposal", "Pelupusan aset"],
   amortisation: ["Amortisation", "Pelunasan"],
   opening_balance: ["Opening balance", "Baki pembukaan"],
+  inventory: ["Inventory", "Inventori"],
 };

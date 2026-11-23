@@ -24,7 +24,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectHTMLAttributes<HTMLSel
     <select
       ref={ref}
       className={cn(
-        "h-[34px] w-full min-w-0 truncate whitespace-nowrap rounded-[var(--radius)] border border-border-strong bg-surface px-2.5",
+        "kira-select h-[34px] w-full min-w-0 rounded-[var(--radius)] border border-border-strong bg-surface px-2.5",
         "text-[13px] text-ink outline-none transition-[border-color,box-shadow] duration-100",
         "focus:border-ink focus:shadow-[0_0_0_3px_color-mix(in_oklab,var(--color-ink)_10%,transparent)]",
         "disabled:opacity-50",

@@ -1,18 +1,8 @@
-import Link from "next/link";
+import { AccountingSettingsHeader } from "@/features/accounting-settings/sub-tabs";
 import { controlAccounts } from "@/features/books/load";
 import type { OrgContext } from "@/shared/org-context";
 import { createSupabaseServerClient } from "@/shared/supabase/server";
-import { cn } from "@/shared/ui/cn";
 import { ControlAccountsForm } from "./control-accounts-form";
-import { SettingsHeader } from "./settings-header";
-
-const SUB = "shrink-0 whitespace-nowrap rounded-[7px] px-2.5 py-1 text-[12px] font-medium transition-colors";
-const SUB_TABS = [
-  { href: "settings/control-accounts", label: "Control accounts" },
-  { href: "settings/document-numbering", label: "Numbering" },
-  { href: "settings/price-book", label: "Price book" },
-  { href: "settings/exchange-rates", label: "Exchange rates" },
-];
 
 /**
  * /{slug}/settings/control-accounts: lejar.ai's Settings → Accounting → Control accounts (observed 2026-11-22).
@@ -37,21 +27,7 @@ export async function ControlAccountsPage({ ctx }: { ctx: OrgContext }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col">
-        <SettingsHeader base={base} legalName={ctx.org.legal_name} sub="Control accounts" active="accounting" />
-        <div className="flex gap-1 overflow-x-auto pt-1.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {SUB_TABS.map((t, i) => (
-            <Link
-              key={t.href}
-              aria-current={i === 0 ? "page" : undefined}
-              href={`${base}/${t.href}`}
-              className={cn(SUB, i === 0 ? "bg-surface-2 text-ink" : "text-muted hover:bg-surface-2 hover:text-ink-2")}
-            >
-              {t.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+      <AccountingSettingsHeader base={base} legalName={ctx.org.legal_name} sub="Control accounts" activeSub="control-accounts" />
       <section className="flex flex-col gap-3">
         <div>
           <h2 className="text-[13.5px] font-semibold text-ink">Control accounts</h2>

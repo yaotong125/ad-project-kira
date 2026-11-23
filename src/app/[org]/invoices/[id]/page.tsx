@@ -14,6 +14,8 @@ import { InvoiceActions } from "@/features/invoices/invoice-actions";
 import { InvoiceForm } from "@/features/invoices/invoice-form";
 import type { FormLine } from "@/features/invoices/lines";
 import { loadInvoice } from "@/features/invoices/load";
+import { loadInvoiceMyInvois } from "@/features/myinvois/load";
+import { InvoiceMyInvoisPanel } from "@/features/myinvois/myinvois-client";
 import { first, type SearchParams } from "@/shared/i18n";
 import { loadOrgContext } from "@/shared/org-context";
 import { createSupabaseServerClient } from "@/shared/supabase/server";
@@ -116,9 +118,10 @@ export default async function Page({ params, searchParams }: { params: Promise<{
   const { data: creditBal } = due?.contact_id
     ? await supabase.from("customer_credit_moves").select("amount").eq("org_id", ctx.org.id).eq("contact_id", due.contact_id).eq("status", "active")
     : { data: [] };
-  const [{ data: fromDo }, { data: fromQuote }] = await Promise.all([
+  const [{ data: fromDo }, { data: fromQuote }, myInvois] = await Promise.all([
     supabase.from("delivery_orders").select("id, do_number").eq("org_id", ctx.org.id).eq("invoice_id", inv.id).maybeSingle(),
     supabase.from("quotes").select("id, quote_number").eq("org_id", ctx.org.id).eq("invoice_id", inv.id).maybeSingle(),
+    loadInvoiceMyInvois(supabase, ctx.org.id, inv.id),
   ]);
   const available = (creditBal ?? []).reduce((s2, m) => s2 + (toSen(String(m.amount)) ?? 0), 0);
   const owed = toSen(String(due?.amount_due ?? inv.total)) ?? 0;
@@ -369,6 +372,17 @@ export default async function Page({ params, searchParams }: { params: Promise<{
             </div>
           )}
         </section>
+      )}
+      {(inv.status === "open" || inv.status === "paid") && (
+        <InvoiceMyInvoisPanel
+          orgSlug={ctx.org.slug}
+          invoiceId={inv.id}
+          invoiceNumber={inv.invoice_number}
+          enabled={myInvois.enabled}
+          environment={myInvois.environment}
+          canEdit={canEdit}
+          latest={myInvois.latest}
+        />
       )}
       {canEdit && <InvoiceActions orgSlug={ctx.org.slug} id={inv.id} status={inv.status} lang={lang} today={todayMY()} invoiceDate={inv.invoice_date} />}
     </div>
