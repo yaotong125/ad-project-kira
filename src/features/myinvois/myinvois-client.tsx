@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Code2, Copy } from "lucide-react";
+import { Check, Code2, Copy, ExternalLink, RefreshCw } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
@@ -8,8 +8,13 @@ import { Button } from "@/shared/ui/button";
 import { Input, Select } from "@/shared/ui/form-controls";
 import {
   cancelMyInvoisSubmissionAction,
+  clearMyInvoisCredentialsAction,
   disableMyInvoisAction,
+  saveMyInvoisCredentialsAction,
   submitInvoiceMyInvoisAction,
+  syncMyInvoisStatusAction,
+  testMyInvoisConnectionAction,
+  validateTaxpayerTinAction,
   verifyMyInvoisSetupAction,
 } from "./actions";
 import { MYINVOIS_CHIP, type MyInvoisEnv, type MyInvoisStatus, type SubmissionSnapshot } from "./types";
@@ -177,6 +182,34 @@ export function MyInvoisRowActions({
           >
             {copied ? <Check size={12} aria-hidden="true" /> : <Copy size={12} aria-hidden="true" />}
             {copied ? "Copied UUID" : "UUID"}
+          </Button>
+        )}
+        {latest?.lhdnUuid && latest.longId && (
+          <a
+            href={`https://${latest.environment === "production" ? "myinvois" : "preprod.myinvois"}.hasil.gov.my/${encodeURIComponent(latest.lhdnUuid)}/share/${encodeURIComponent(latest.longId)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 rounded-[var(--radius)] px-2 py-1 text-[11.5px] font-medium text-brand hover:bg-surface-2"
+          >
+            <ExternalLink size={12} aria-hidden="true" /> LHDN portal
+          </a>
+        )}
+        {canEdit && latest?.lhdnUuid && (status === "pending" || status === "valid") && (
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            disabled={pending}
+            onClick={() => {
+              setErr(null);
+              start(async () => {
+                const r = await syncMyInvoisStatusAction(orgSlug, latest.id, invoiceId);
+                if (r.ok) router.refresh();
+                else setErr(r.error);
+              });
+            }}
+          >
+            <RefreshCw size={12} aria-hidden="true" /> Sync
           </Button>
         )}
         {latest && (
@@ -353,6 +386,224 @@ export function InvoiceMyInvoisPanel({
           .
         </p>
       )}
+    </section>
+  );
+}
+
+export function MyInvoisCredentialsCard({
+  orgSlug,
+  apiMode,
+  initialClientId,
+  clientSecretHint,
+  initialOnBehalfOf,
+  encryptionReady,
+  canAdmin,
+}: {
+  orgSlug: string;
+  apiMode: "live_org" | "live_env" | "simulation";
+  initialClientId: string | null;
+  clientSecretHint: string | null;
+  initialOnBehalfOf: string | null;
+  encryptionReady: boolean;
+  canAdmin: boolean;
+}) {
+  const router = useRouter();
+  const [clientId, setClientId] = useState(initialClientId ?? "");
+  const [clientSecret, setClientSecret] = useState("");
+  const [onBehalfOf, setOnBehalfOf] = useState(initialOnBehalfOf ?? "");
+  const [tin, setTin] = useState("");
+  const [idType, setIdType] = useState<"BRN" | "NRIC" | "PASSPORT" | "ARMY">("BRN");
+  const [idValue, setIdValue] = useState("");
+  const [msg, setMsg] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [tinMsg, setTinMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [pending, start] = useTransition();
+
+  return (
+    <section className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 className="m-0 text-[14px] font-semibold text-ink">3. LHDN API credentials (OAuth 2.0)</h2>
+          <p className="m-0 mt-1 text-[12.5px] text-muted">
+            Connect directly to LHDN&apos;s MyInvois REST API (<code className="num text-[12px]">/connect/token</code> &amp;{" "}
+            <code className="num text-[12px]">/api/v1.0/documentsubmissions</code>). Leave blank to stay in Sandbox simulation mode.
+          </p>
+        </div>
+        <span className={apiMode === "simulation" ? "chip" : "chip pos"} data-testid="mi-api-mode">
+          {apiMode === "live_org"
+            ? "Live API (org credentials)"
+            : apiMode === "live_env"
+              ? "Live API (platform env)"
+              : "Sandbox simulation"}
+        </span>
+      </div>
+
+      {!encryptionReady && apiMode !== "live_env" && (
+        <p className="m-0 rounded-[var(--radius)] border border-border bg-surface-2 px-3 py-2 text-[12px] text-muted">
+          To store per-organisation client secrets securely in Postgres (AES-256-GCM), set{" "}
+          <code className="num text-ink">MYINVOIS_ENCRYPTION_KEY</code> in your server environment, or set platform-wide{" "}
+          <code className="num text-ink">MYINVOIS_CLIENT_ID</code> &amp;{" "}
+          <code className="num text-ink">MYINVOIS_CLIENT_SECRET</code>.
+        </p>
+      )}
+
+      {canAdmin ? (
+        <form
+          className="grid grid-cols-1 gap-3 sm:grid-cols-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setMsg(null);
+            setErr(null);
+            start(async () => {
+              const r = await saveMyInvoisCredentialsAction(orgSlug, { clientId, clientSecret, onBehalfOf });
+              if (r.ok) {
+                setClientSecret("");
+                setMsg("LHDN MyInvois credentials saved.");
+                router.refresh();
+              } else {
+                setErr(r.error);
+              }
+            });
+          }}
+        >
+          <div className="flex min-w-0 flex-col gap-1">
+            <label htmlFor="mi-cid" className="text-[12.5px] font-medium text-ink-2">
+              ERP Client ID<span className="ml-0.5 text-negative">*</span>
+            </label>
+            <Input
+              id="mi-cid"
+              required
+              placeholder="From MyInvois Portal → ERP Integration"
+              value={clientId}
+              onChange={(e) => setClientId(e.target.value)}
+            />
+          </div>
+          <div className="flex min-w-0 flex-col gap-1">
+            <label htmlFor="mi-csec" className="text-[12.5px] font-medium text-ink-2">
+              Client Secret {clientSecretHint ? `(saved ${clientSecretHint})` : ""}
+            </label>
+            <Input
+              id="mi-csec"
+              type="password"
+              placeholder={clientSecretHint ? "Leave blank to keep existing" : "Enter LHDN client secret"}
+              value={clientSecret}
+              onChange={(e) => setClientSecret(e.target.value)}
+            />
+          </div>
+          <div className="flex min-w-0 flex-col gap-1">
+            <label htmlFor="mi-obo" className="text-[12.5px] font-medium text-ink-2">
+              On-behalf-of TIN (optional)
+            </label>
+            <Input
+              id="mi-obo"
+              placeholder="Intermediary TIN if applicable"
+              value={onBehalfOf}
+              onChange={(e) => setOnBehalfOf(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-wrap items-center gap-2 pt-1 sm:col-span-3">
+            <Button type="submit" size="sm" className="h-[32px]" disabled={pending}>
+              {pending ? "Saving..." : "Save credentials"}
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              className="h-[32px]"
+              disabled={pending}
+              onClick={() => {
+                setMsg(null);
+                setErr(null);
+                start(async () => {
+                  const r = await testMyInvoisConnectionAction(orgSlug);
+                  if (r.ok) setMsg(r.message);
+                  else setErr(r.error);
+                });
+              }}
+            >
+              Test LHDN connection
+            </Button>
+            {initialClientId && (
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                className="h-[32px]"
+                disabled={pending}
+                onClick={() => {
+                  setMsg(null);
+                  setErr(null);
+                  start(async () => {
+                    const r = await clearMyInvoisCredentialsAction(orgSlug);
+                    if (r.ok) {
+                      setClientId("");
+                      setClientSecret("");
+                      setOnBehalfOf("");
+                      setMsg("Credentials cleared. Reverted to sandbox simulation.");
+                      router.refresh();
+                    } else {
+                      setErr(r.error);
+                    }
+                  });
+                }}
+              >
+                Clear
+              </Button>
+            )}
+          </div>
+        </form>
+      ) : (
+        <p className="m-0 text-[12.5px] text-muted">Only an owner or admin can manage LHDN API credentials.</p>
+      )}
+
+      {msg && <p role="status" className="m-0 text-[12.5px] font-medium text-positive">{msg}</p>}
+      {err && <p role="alert" className="m-0 text-[12.5px] text-negative">{err}</p>}
+
+      <div className="border-t border-border pt-3">
+        <div className="text-[12.5px] font-medium text-ink">Quick live TIN check</div>
+        <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[1fr_130px_1fr_auto] sm:items-end">
+          <Input
+            aria-label="Taxpayer TIN"
+            placeholder="e.g. C25845632020"
+            value={tin}
+            onChange={(e) => setTin(e.target.value)}
+          />
+          <Select aria-label="ID type" value={idType} onChange={(e) => setIdType(e.target.value as typeof idType)}>
+            <option value="BRN">BRN</option>
+            <option value="NRIC">NRIC</option>
+            <option value="PASSPORT">Passport</option>
+            <option value="ARMY">Army</option>
+          </Select>
+          <Input
+            aria-label="ID value"
+            placeholder="e.g. 202001012345"
+            value={idValue}
+            onChange={(e) => setIdValue(e.target.value)}
+          />
+          <Button
+            type="button"
+            size="sm"
+            variant="secondary"
+            className="h-[34px]"
+            disabled={pending}
+            onClick={() => {
+              setTinMsg(null);
+              start(async () => {
+                const r = await validateTaxpayerTinAction(orgSlug, { tin, idType, idValue });
+                if (r.ok) setTinMsg({ ok: r.valid, text: r.message });
+                else setTinMsg({ ok: false, text: r.error });
+              });
+            }}
+          >
+            Validate TIN
+          </Button>
+        </div>
+        {tinMsg && (
+          <p role="status" className={`m-0 mt-2 text-[12.5px] font-medium ${tinMsg.ok ? "text-positive" : "text-negative"}`}>
+            {tinMsg.text}
+          </p>
+        )}
+      </div>
     </section>
   );
 }

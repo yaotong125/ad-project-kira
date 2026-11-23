@@ -8,7 +8,7 @@ import { createSupabaseServerClient } from "@/shared/supabase/server";
 import { buttonClass } from "@/shared/ui/button";
 import { cn } from "@/shared/ui/cn";
 import { loadMyInvoisPageData, loadSupplierSetup } from "./load";
-import { MyInvoisRowActions, MyInvoisSetupControls } from "./myinvois-client";
+import { MyInvoisCredentialsCard, MyInvoisRowActions, MyInvoisSetupControls } from "./myinvois-client";
 import { MYINVOIS_CHIP } from "./types";
 
 const TH = "border-b border-border px-[var(--pad-x)] py-2 text-[11.5px] font-medium uppercase tracking-[0.04em] text-muted";
@@ -307,6 +307,17 @@ export async function MyInvoisSettingsPage({ ctx }: { ctx: OrgContext }) {
           canAdmin={canAdmin}
         />
       </section>
+
+      {/* 3. Live LHDN MyInvois OAuth 2.0 credentials & TIN validator */}
+      <MyInvoisCredentialsCard
+        orgSlug={ctx.org.slug}
+        apiMode={setup.apiMode}
+        initialClientId={setup.clientId}
+        clientSecretHint={setup.clientSecretHint}
+        initialOnBehalfOf={setup.onBehalfOf}
+        encryptionReady={setup.encryptionReady}
+        canAdmin={canAdmin}
+      />
     </div>
   );
 }

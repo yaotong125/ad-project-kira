@@ -15,6 +15,11 @@ export type SupplierSetup = {
   mandateStart: string | null;
   checklist: ChecklistItem[];
   profileComplete: boolean;
+  apiMode: "live_org" | "live_env" | "simulation";
+  clientId: string | null;
+  clientSecretHint: string | null;
+  onBehalfOf: string | null;
+  encryptionReady: boolean;
 };
 
 export type SubmissionSnapshot = {

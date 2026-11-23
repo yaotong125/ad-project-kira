@@ -1,5 +1,6 @@
 import "server-only";
 import type { createSupabaseServerClient } from "@/shared/supabase/server";
+import { isEncryptionConfigured, resolveLhdnCredentials } from "./lhdn-client";
 import type {
   ChecklistItem,
   MyInvoisEnv,
@@ -14,13 +15,31 @@ const sen = (v: unknown) => Math.round(Number(v ?? 0) * 100);
 const one = <T,>(v: T | T[] | null | undefined): T | null => (Array.isArray(v) ? (v[0] ?? null) : (v ?? null));
 
 export async function loadSupplierSetup(supabase: Supabase, orgId: string): Promise<SupplierSetup> {
-  const { data: o } = await supabase
-    .from("organizations")
-    .select(
-      "legal_name, registration_type, registration_number, tin, phone, msic_code, business_activity_description, address, postcode, city, state, myinvois_mandate_effective_on, myinvois_enabled, myinvois_environment, myinvois_verified_at",
-    )
-    .eq("id", orgId)
-    .single();
+  const [{ data: o }, { data: credRow }] = await Promise.all([
+    supabase
+      .from("organizations")
+      .select(
+        "legal_name, registration_type, registration_number, tin, phone, msic_code, business_activity_description, address, postcode, city, state, myinvois_mandate_effective_on, myinvois_enabled, myinvois_environment, myinvois_verified_at",
+      )
+      .eq("id", orgId)
+      .single(),
+    supabase
+      .from("organizations")
+      .select("myinvois_client_id, myinvois_client_secret_enc, myinvois_client_secret_hint, myinvois_on_behalf_of")
+      .eq("id", orgId)
+      .maybeSingle(),
+  ]);
+
+  const resolved = resolveLhdnCredentials({
+    clientId: credRow?.myinvois_client_id,
+    clientSecretEnc: credRow?.myinvois_client_secret_enc,
+    onBehalfOf: credRow?.myinvois_on_behalf_of,
+  });
+  const apiMode: SupplierSetup["apiMode"] = resolved
+    ? resolved.source === "org"
+      ? "live_org"
+      : "live_env"
+    : "simulation";
 
   const addrComplete = Boolean(o?.address && o?.postcode && o?.city && o?.state);
   const addrDisplay = addrComplete ? `${o?.address}, ${o?.postcode} ${o?.city}, ${o?.state}` : null;
@@ -51,6 +70,11 @@ export async function loadSupplierSetup(supabase: Supabase, orgId: string): Prom
     mandateStart: o?.myinvois_mandate_effective_on ?? null,
     checklist,
     profileComplete: checklist.every((c) => c.ok),
+    apiMode,
+    clientId: credRow?.myinvois_client_id ?? null,
+    clientSecretHint: credRow?.myinvois_client_secret_hint ?? null,
+    onBehalfOf: credRow?.myinvois_on_behalf_of ?? null,
+    encryptionReady: isEncryptionConfigured(),
   };
 }
 
