@@ -1,0 +1,1072 @@
+[
+ {
+  "code": "1000",
+  "name": "Assets",
+  "type": "asset",
+  "subtype": null,
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0000",
+  "name": "Property, Plant and Equipment",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0100",
+  "name": "Land and Buildings",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0105",
+  "name": "Accumulated Depreciation - Land and Buildings",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": "200-0100"
+ },
+ {
+  "code": "200-0200",
+  "name": "Furniture, Fittings and Office Equipment",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0205",
+  "name": "Accumulated Depreciation - Furniture, Fittings and Office Equipment",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": "200-0200"
+ },
+ {
+  "code": "200-0300",
+  "name": "Computer Equipment",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0305",
+  "name": "Accumulated Depreciation - Computer Equipment",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": "200-0300"
+ },
+ {
+  "code": "200-0400",
+  "name": "Motor Vehicles",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0405",
+  "name": "Accumulated Depreciation - Motor Vehicles",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": "200-0400"
+ },
+ {
+  "code": "200-0500",
+  "name": "Renovation and Leasehold Improvements",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0505",
+  "name": "Accumulated Depreciation - Renovation and Leasehold Improvements",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": "200-0500"
+ },
+ {
+  "code": "200-0700",
+  "name": "Other Non-Current Assets",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0800",
+  "name": "Director Loan Receivable",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "200-0900",
+  "name": "Deferred Tax Asset",
+  "type": "asset",
+  "subtype": "non_current",
+  "section": "fixed_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0000",
+  "name": "Current Assets",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0100",
+  "name": "Inventory",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0200",
+  "name": "Trade Receivables",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0400",
+  "name": "Other Receivables",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0500",
+  "name": "Prepayments",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0600",
+  "name": "Deposits",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0700",
+  "name": "Amount Due from Directors",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0800",
+  "name": "Tax Recoverable",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0900",
+  "name": "Cash and Bank Balances",
+  "type": "asset",
+  "subtype": "cash",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": true,
+  "parent": null
+ },
+ {
+  "code": "300-1000",
+  "name": "Cash in Hand and Petty Cash",
+  "type": "asset",
+  "subtype": "cash",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": true,
+  "parent": null
+ },
+ {
+  "code": "300-1100",
+  "name": "Current and Savings Accounts",
+  "type": "asset",
+  "subtype": "cash",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": true,
+  "parent": null
+ },
+ {
+  "code": "300-1200",
+  "name": "Fixed Deposits",
+  "type": "asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "300-0305",
+  "name": "Allowance for Doubtful Debts",
+  "type": "contra_asset",
+  "subtype": "current",
+  "section": "current_asset",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "2000",
+  "name": "Liabilities",
+  "type": "liability",
+  "subtype": null,
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0000",
+  "name": "Current Liabilities",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0100",
+  "name": "Trade Payables",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0200",
+  "name": "Other Payables",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0300",
+  "name": "Accruals",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0400",
+  "name": "Amount Due to Directors",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0500",
+  "name": "Statutory Payables",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0600",
+  "name": "EPF Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0700",
+  "name": "SOCSO Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0800",
+  "name": "EIS Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-0900",
+  "name": "PCB / MTD Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1000",
+  "name": "HRDF Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1100",
+  "name": "Withholding Tax Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1200",
+  "name": "SST Payable",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1300",
+  "name": "SST Output Tax",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1500",
+  "name": "Provision for Income Tax",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1600",
+  "name": "Customer Deposits",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1700",
+  "name": "Deferred SST on unpaid invoices",
+  "type": "liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "500-0000",
+  "name": "Non-Current Liabilities",
+  "type": "liability",
+  "subtype": "non_current",
+  "section": "long_term_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "500-0100",
+  "name": "Hire Purchase Payable",
+  "type": "liability",
+  "subtype": "non_current",
+  "section": "long_term_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "500-0200",
+  "name": "Bank Term Loans",
+  "type": "liability",
+  "subtype": "non_current",
+  "section": "long_term_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "500-0300",
+  "name": "Director Loan Payable",
+  "type": "liability",
+  "subtype": "non_current",
+  "section": "long_term_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "500-0400",
+  "name": "Deferred Tax Liability",
+  "type": "liability",
+  "subtype": "non_current",
+  "section": "long_term_liability",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "400-1400",
+  "name": "SST Input Tax",
+  "type": "contra_liability",
+  "subtype": "current",
+  "section": "current_liability",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0000",
+  "name": "Equity",
+  "type": "equity",
+  "subtype": null,
+  "section": "equity",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0100",
+  "name": "Share Capital",
+  "type": "equity",
+  "subtype": null,
+  "section": "equity",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0200",
+  "name": "Ordinary Share Capital",
+  "type": "equity",
+  "subtype": null,
+  "section": "equity",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0300",
+  "name": "Reserves",
+  "type": "equity",
+  "subtype": null,
+  "section": "equity",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0400",
+  "name": "Retained Earnings",
+  "type": "equity",
+  "subtype": null,
+  "section": "retained_earnings",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "100-0500",
+  "name": "Dividends Declared",
+  "type": "equity",
+  "subtype": null,
+  "section": "equity",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "600-0000",
+  "name": "Revenue",
+  "type": "revenue",
+  "subtype": null,
+  "section": "sales",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "600-0100",
+  "name": "Sales of Goods",
+  "type": "revenue",
+  "subtype": null,
+  "section": "sales",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "600-0200",
+  "name": "Service Revenue",
+  "type": "revenue",
+  "subtype": null,
+  "section": "sales",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "600-0300",
+  "name": "Project and Contract Revenue",
+  "type": "revenue",
+  "subtype": null,
+  "section": "sales",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "600-0400",
+  "name": "Sales Returns and Discounts",
+  "type": "revenue",
+  "subtype": null,
+  "section": "sales",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0100",
+  "name": "Other Income",
+  "type": "revenue",
+  "subtype": null,
+  "section": "other_income",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0200",
+  "name": "Interest Income",
+  "type": "revenue",
+  "subtype": null,
+  "section": "other_income",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0300",
+  "name": "Rental Income",
+  "type": "revenue",
+  "subtype": null,
+  "section": "other_income",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0400",
+  "name": "Gain on Disposal of Assets",
+  "type": "revenue",
+  "subtype": null,
+  "section": "other_income",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "700-0000",
+  "name": "Cost of Sales",
+  "type": "expense",
+  "subtype": null,
+  "section": "cost_of_sales",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "700-0100",
+  "name": "Purchases",
+  "type": "expense",
+  "subtype": null,
+  "section": "cost_of_sales",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "700-0200",
+  "name": "Purchase Returns and Discounts",
+  "type": "expense",
+  "subtype": null,
+  "section": "cost_of_sales",
+  "normal": "credit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "700-0300",
+  "name": "Subcontractor Costs",
+  "type": "expense",
+  "subtype": null,
+  "section": "cost_of_sales",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0000",
+  "name": "Operating Expenses",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0100",
+  "name": "Staff Costs",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0200",
+  "name": "Salaries and Wages",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0300",
+  "name": "Directors Remuneration",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0400",
+  "name": "EPF - Employer Contribution",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0500",
+  "name": "SOCSO and EIS - Employer Contribution",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0600",
+  "name": "HRDF Levy",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0700",
+  "name": "Premises Costs",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0800",
+  "name": "Rental of Premises",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-0900",
+  "name": "Utilities",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1000",
+  "name": "Repairs and Maintenance",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1100",
+  "name": "Administrative Expenses",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1200",
+  "name": "Office Supplies and Printing",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1300",
+  "name": "Telephone and Internet",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1400",
+  "name": "Travelling and Accommodation",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1500",
+  "name": "Motor Vehicle Running Expenses",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1600",
+  "name": "Professional and Compliance Fees",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1700",
+  "name": "Audit Fees",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1800",
+  "name": "Tax Agent Fees",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-1900",
+  "name": "Accounting and Secretarial Fees",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2000",
+  "name": "Selling and Marketing Expenses",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2100",
+  "name": "Advertising and Promotion",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2200",
+  "name": "Commission Paid",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2300",
+  "name": "Depreciation",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2400",
+  "name": "Depreciation of Property, Plant and Equipment",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2500",
+  "name": "Other Operating Expenses",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2600",
+  "name": "Bad Debts Written Off",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2700",
+  "name": "Allowance for Doubtful Debts",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "800-2800",
+  "name": "Withholding Tax Expense",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0000",
+  "name": "Other Income, Finance Costs and Taxation",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0500",
+  "name": "Finance Costs",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0600",
+  "name": "Bank Charges",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0700",
+  "name": "Interest on Borrowings",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0800",
+  "name": "Taxation",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-0900",
+  "name": "Income Tax Expense - Current",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ },
+ {
+  "code": "900-1000",
+  "name": "Income Tax Expense - Deferred",
+  "type": "expense",
+  "subtype": null,
+  "section": "operating_expense",
+  "normal": "debit",
+  "is_cash": false,
+  "parent": null
+ }
+]

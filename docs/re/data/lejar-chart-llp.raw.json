@@ -1,0 +1,1961 @@
+{
+ "headers": [
+  "Assets",
+  "Contra assets",
+  "Liabilities",
+  "Contra liabilities",
+  "Equity",
+  "Revenue",
+  "Expenses"
+ ],
+ "accounts": [
+  {
+   "group": "Assets",
+   "code": "1000",
+   "name": "Assets",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0000",
+   "name": "Property, Plant and Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0100",
+   "name": "Land and Buildings",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "↳ 200-0105",
+   "name": "Accumulated Depreciation - Land and Buildings",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0200",
+   "name": "Furniture, Fittings and Office Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "↳ 200-0205",
+   "name": "Accumulated Depreciation - Furniture, Fittings and Office Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0300",
+   "name": "Computer Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "↳ 200-0305",
+   "name": "Accumulated Depreciation - Computer Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0400",
+   "name": "Motor Vehicles",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "↳ 200-0405",
+   "name": "Accumulated Depreciation - Motor Vehicles",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0500",
+   "name": "Renovation and Leasehold Improvements",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "↳ 200-0505",
+   "name": "Accumulated Depreciation - Renovation and Leasehold Improvements",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0700",
+   "name": "Other Non-Current Assets",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0800",
+   "name": "Director Loan Receivable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "200-0900",
+   "name": "Deferred Tax Asset",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "fixed_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0000",
+   "name": "Current Assets",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0100",
+   "name": "Inventory",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0200",
+   "name": "Trade Receivables",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0400",
+   "name": "Other Receivables",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0500",
+   "name": "Prepayments",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0600",
+   "name": "Deposits",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0700",
+   "name": "Amount Due from Directors",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0800",
+   "name": "Tax Recoverable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-0900",
+   "name": "Cash and Bank Balances",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Cash / bank",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Unmark cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-1000",
+   "name": "Cash in Hand and Petty Cash",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Cash / bank",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Unmark cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-1100",
+   "name": "Current and Savings Accounts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Cash / bank",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Unmark cash Disable Delete"
+  },
+  {
+   "group": "Assets",
+   "code": "300-1200",
+   "name": "Fixed Deposits",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Mark as cash Disable Delete"
+  },
+  {
+   "group": "Contra assets",
+   "code": "300-0305",
+   "name": "Allowance for Doubtful Debts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_asset",
+   "section_options": [
+    "",
+    "fixed_asset",
+    "current_asset"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "2000",
+   "name": "Liabilities",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0000",
+   "name": "Current Liabilities",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0100",
+   "name": "Trade Payables",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0200",
+   "name": "Other Payables",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0300",
+   "name": "Accruals",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0400",
+   "name": "Amount Due to Directors",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0500",
+   "name": "Statutory Payables",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0600",
+   "name": "EPF Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0700",
+   "name": "SOCSO Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0800",
+   "name": "EIS Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-0900",
+   "name": "PCB / MTD Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1000",
+   "name": "HRDF Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1100",
+   "name": "Withholding Tax Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1200",
+   "name": "SST Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1300",
+   "name": "SST Output Tax",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1500",
+   "name": "Provision for Income Tax",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1600",
+   "name": "Customer Deposits",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "400-1700",
+   "name": "Deferred SST on unpaid invoices",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "500-0000",
+   "name": "Non-Current Liabilities",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "long_term_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "500-0100",
+   "name": "Hire Purchase Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "long_term_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "500-0200",
+   "name": "Bank Term Loans",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "long_term_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "500-0300",
+   "name": "Director Loan Payable",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "long_term_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Liabilities",
+   "code": "500-0400",
+   "name": "Deferred Tax Liability",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Non-current",
+   "section": "long_term_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Contra liabilities",
+   "code": "400-1400",
+   "name": "SST Input Tax",
+   "child": false,
+   "indent_px": null,
+   "subtype": "Current",
+   "section": "current_liability",
+   "section_options": [
+    "",
+    "current_liability",
+    "long_term_liability"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Equity",
+   "code": "100-0000",
+   "name": "Partners' Equity",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "equity",
+   "section_options": [
+    "",
+    "equity",
+    "retained_earnings"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Equity",
+   "code": "100-0100",
+   "name": "Partners' Capital Contributions",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "equity",
+   "section_options": [
+    "",
+    "equity",
+    "retained_earnings"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Equity",
+   "code": "100-0200",
+   "name": "Partners' Current Accounts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "equity",
+   "section_options": [
+    "",
+    "equity",
+    "retained_earnings"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Equity",
+   "code": "100-0300",
+   "name": "Undistributed Profits",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "retained_earnings",
+   "section_options": [
+    "",
+    "equity",
+    "retained_earnings"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Equity",
+   "code": "100-0400",
+   "name": "Partners' Drawings",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "equity",
+   "section_options": [
+    "",
+    "equity",
+    "retained_earnings"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "600-0000",
+   "name": "Revenue",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "sales",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "600-0100",
+   "name": "Sales of Goods",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "sales",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "600-0200",
+   "name": "Service Revenue",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "sales",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "600-0300",
+   "name": "Project and Contract Revenue",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "sales",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "600-0400",
+   "name": "Sales Returns and Discounts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "sales",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "900-0100",
+   "name": "Other Income",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "other_income",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "900-0200",
+   "name": "Interest Income",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "other_income",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "900-0300",
+   "name": "Rental Income",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "other_income",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Revenue",
+   "code": "900-0400",
+   "name": "Gain on Disposal of Assets",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "other_income",
+   "section_options": [
+    "",
+    "sales",
+    "other_income"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "700-0000",
+   "name": "Cost of Sales",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "cost_of_sales",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "700-0100",
+   "name": "Purchases",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "cost_of_sales",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "700-0200",
+   "name": "Purchase Returns and Discounts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "cost_of_sales",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Credit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "700-0300",
+   "name": "Subcontractor Costs",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "cost_of_sales",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0000",
+   "name": "Operating Expenses",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0100",
+   "name": "Staff Costs",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0200",
+   "name": "Salaries and Wages",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0300",
+   "name": "Directors Remuneration",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0400",
+   "name": "EPF - Employer Contribution",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0500",
+   "name": "SOCSO and EIS - Employer Contribution",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0600",
+   "name": "HRDF Levy",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0700",
+   "name": "Premises Costs",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0800",
+   "name": "Rental of Premises",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-0900",
+   "name": "Utilities",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1000",
+   "name": "Repairs and Maintenance",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1100",
+   "name": "Administrative Expenses",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1200",
+   "name": "Office Supplies and Printing",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1300",
+   "name": "Telephone and Internet",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1400",
+   "name": "Travelling and Accommodation",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1500",
+   "name": "Motor Vehicle Running Expenses",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1600",
+   "name": "Professional and Compliance Fees",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1700",
+   "name": "Audit Fees",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1800",
+   "name": "Tax Agent Fees",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-1900",
+   "name": "Accounting and Secretarial Fees",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2000",
+   "name": "Selling and Marketing Expenses",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2100",
+   "name": "Advertising and Promotion",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2200",
+   "name": "Commission Paid",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2300",
+   "name": "Depreciation",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2400",
+   "name": "Depreciation of Property, Plant and Equipment",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2500",
+   "name": "Other Operating Expenses",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2600",
+   "name": "Bad Debts Written Off",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2700",
+   "name": "Allowance for Doubtful Debts",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "800-2800",
+   "name": "Withholding Tax Expense",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0000",
+   "name": "Other Income, Finance Costs and Taxation",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0500",
+   "name": "Finance Costs",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0600",
+   "name": "Bank Charges",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0700",
+   "name": "Interest on Borrowings",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0800",
+   "name": "Taxation",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-0900",
+   "name": "Income Tax Expense - Current",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  },
+  {
+   "group": "Expenses",
+   "code": "900-1000",
+   "name": "Income Tax Expense - Deferred",
+   "child": false,
+   "indent_px": null,
+   "subtype": "–",
+   "section": "operating_expense",
+   "section_options": [
+    "",
+    "cost_of_sales",
+    "operating_expense",
+    "other_expense"
+   ],
+   "currency": "MYR",
+   "normal": "Debit",
+   "status": "Active",
+   "actions": "Reclassify Disable Delete"
+  }
+ ]
+}

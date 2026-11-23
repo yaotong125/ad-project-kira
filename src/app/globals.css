@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens.
+ * Token NAMES follow lejar.ai's Tailwind v4 theme (recovered from its global
+ * stylesheet, see docs/re/01-sign-in.md) so its utility classes and layout can be
+ * reused 1:1. Token VALUES are Kira's palette (Kira/frontend/src/index.css).
+ */
+@theme {
+  --font-sans: var(--font-avenir), "Avenir Next", "Nunito Sans", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-avenir), "Avenir Next", "Nunito Sans", Helvetica, Arial, sans-serif;
+  --font-mono: "Courier Prime", "Courier New", Courier, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 0.375rem;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 1rem;
+
+  /* Shadows: Lejar's geometry, tinted with Kira's dark navy (#223358). */
+  --shadow-xs: 0 1px 0 #2233580a;
+  --shadow-sm: 0 1px 2px #2233580f, 0 0 0 0.5px #2233580f;
+  --shadow-md: 0 4px 14px -2px #22335814, 0 0 0 0.5px #2233580f;
+  --shadow-lg: 0 24px 60px -12px #22335838, 0 2px 4px #2233580f;
+
+  /* Surfaces and text (Kira secondary ramp). */
+  --color-bg: #f5f6f9;            /* Kira secondary-05 */
+  --color-surface: #ffffff;
+  --color-surface-2: #eef1f6;
+  --color-surface-3: #e4ebf2;     /* Kira "himalaya peaks" */
+  --color-ink: #223358;           /* Kira secondary-dark */
+  --color-ink-2: #32497f;         /* Kira secondary (body text) */
+  --color-muted: #5f6f96;         /* between Kira secondary-90 and -70; 4.5:1 on white */
+  --color-border: #eaedf2;        /* Kira secondary-10 */
+  --color-border-strong: #c1c8d9; /* Kira secondary-30 */
+
+  /* Brand (Kira teal / mint). */
+  --color-brand: #00a69c;         /* Kira primary */
+  --color-brand-2: #00746d;       /* Kira primary-dark */
+  --color-brand-soft: #e3f6f4;
+  --color-brand-ink: #00534e;
+  --color-brand-border: #a6dcd8;
+  --color-mint: #00ffbe;          /* Kira accent */
+  --color-turquoise: #00d3c7;     /* Kira accent-turquoise: primary buttons (navy text, 6.6:1) */
+  --color-turquoise-2: #00c4b8;   /* Kira logo green: primary hover / border */
+  --color-focus: #7597e8;         /* Kira input focus */
+
+  /* AI accent (Kira AI gradient endpoints). */
+  --color-ai: #5e5be9;
+  --color-ai-2: #205dfc;
+  --color-ai-soft: #eeeefd;
+  --color-ai-ink: #2a2f7a;
+
+  /* Status. */
+  --color-positive: #00746d;
+  --color-positive-soft: #e3f6f4;
+  --color-negative: #b4332e;
+  --color-negative-soft: #fbecec;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #faf1dc;
+}
+
+:root {
+  --radius: 8px;
+}
+
+/* Base styles live in the base layer so utilities (e.g. outline-none on inputs) still win. */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 13.5px;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-brand) 25%, transparent);
+  }
+}
+
+/*
+ * Auth page background, as on Digits' sign-in page (my.digits.com/login): white page and a
+ * soft glow of eight blurred circles (purple, cyan, green) behind the card. Values from
+ * Kira/frontend/src/components/auth-pages.css (.ka-glow, measured on my.digits.com 2026-11-15).
+ */
+@layer components {
+  .auth-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    filter: blur(72px);
+    pointer-events: none;
+    background:
+      radial-gradient(circle at calc(50% - 100px) calc(50% - 77.5px), rgba(120, 98, 255, 0.45) 128.5px, rgba(255, 255, 255, 0) 128.5px),
+      radial-gradient(circle at calc(50% - 7.5px) calc(50% + 9px), rgba(64, 221, 255, 0.85) 64px, rgba(255, 255, 255, 0) 64px),
+      radial-gradient(circle at calc(50% + 72px) calc(50% - 53px), rgba(120, 98, 255, 0.45) 128.5px, rgba(255, 255, 255, 0) 128.5px),
+      radial-gradient(circle at calc(50% + 164.5px) calc(50% + 33.5px), rgba(64, 221, 255, 0.85) 64px, rgba(255, 255, 255, 0) 64px),
+      radial-gradient(circle at calc(50% + 20px) calc(50% + 24.5px), rgba(78, 255, 170, 0.55) 128.5px, rgba(255, 255, 255, 0) 128.5px),
+      radial-gradient(circle at calc(50% + 112.5px) calc(50% + 111px), rgba(64, 221, 255, 0.85) 64px, rgba(255, 255, 255, 0) 64px),
+      radial-gradient(circle at calc(50% - 77px) calc(50% + 54.5px), rgba(78, 255, 170, 0.55) 128.5px, rgba(255, 255, 255, 0) 128.5px),
+      radial-gradient(circle at calc(50% + 15.5px) calc(50% + 141px), rgba(64, 221, 255, 0.85) 64px, rgba(255, 255, 255, 0) 64px);
+  }
+}
+
+/* lejar.ai's .card (global stylesheet): white panel, 1px border, 12px radius. */
+@layer components {
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+  }
+}
+
+/* lejar.ai's small global helpers (global stylesheet 34gq8fim6ndn0.css), with Kira's tokens. */
+@layer components {
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+    padding: 0 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface-2);
+    color: var(--color-ink-2);
+    font-size: 11.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .chip.brand {
+    background: var(--color-brand-soft);
+    border-color: color-mix(in oklab, var(--color-brand) 20%, var(--color-border));
+    color: var(--color-brand-ink);
+  }
+  .chip.ai {
+    background: var(--color-ai-soft);
+    border-color: color-mix(in oklab, var(--color-ai) 18%, var(--color-border));
+    color: var(--color-ai-ink);
+  }
+  .chip.pos {
+    background: var(--color-positive-soft);
+    border-color: color-mix(in oklab, var(--color-positive) 18%, var(--color-border));
+    color: var(--color-positive);
+  }
+  .chip.neg {
+    background: var(--color-negative-soft);
+    border-color: color-mix(in oklab, var(--color-negative) 18%, var(--color-border));
+    color: var(--color-negative);
+  }
+  .chip.warn {
+    background: var(--color-warning-soft);
+    border-color: color-mix(in oklab, var(--color-warning) 18%, var(--color-border));
+    color: var(--color-warning);
+  }
+  .kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-surface-2);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+  .scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    border: 2.5px solid var(--color-bg);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-ink) 12%, transparent) padding-box;
+  }
+  .scroll::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-ink) 22%, transparent) padding-box;
+  }
+}
+
+/* lejar.ai's table density tokens (:root, comfortable) and tabular numbers without the mono face. */
+:root {
+  --row-h: 38px;
+  --pad-x: 14px;
+  --gap: 12px;
+}
+@layer components {
+  .num-sans {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
