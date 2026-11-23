@@ -58,7 +58,11 @@ async function route(request: NextRequest): Promise<NextResponse> {
     // One-time Terms gate (Kira addition): an account without a Terms acceptance date (Google from
     // /login, users added in the Supabase dashboard, older accounts) must accept on /auth/terms
     // before opening any other page. Page loads only (GET), so form posts are never redirected.
-    const exempt = PUBLIC_PATHS.has(pathname) || pathname.startsWith("/invite/") || pathname === TERMS_PAGE;
+    const exempt =
+      PUBLIC_PATHS.has(pathname) ||
+      pathname.startsWith("/invite/") ||
+      pathname.startsWith("/api/cron/") ||
+      pathname === TERMS_PAGE;
     if (!exempt && request.method === "GET" && !hasAcceptedTerms(claims.user_metadata)) {
       const terms = request.nextUrl.clone();
       terms.pathname = TERMS_PAGE;
@@ -70,7 +74,7 @@ async function route(request: NextRequest): Promise<NextResponse> {
     }
     return response;
   }
-  if (PUBLIC_PATHS.has(pathname) || pathname.startsWith("/invite/")) return response;
+  if (PUBLIC_PATHS.has(pathname) || pathname.startsWith("/invite/") || pathname.startsWith("/api/cron/")) return response;
 
   const login = request.nextUrl.clone();
   login.pathname = "/login";

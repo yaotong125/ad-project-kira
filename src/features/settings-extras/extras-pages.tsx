@@ -14,6 +14,7 @@ import {
   LanguagePreferenceForm,
   MfaEnforcementToggle,
   RevokeApiKeyButton,
+  ScheduledAutomationsControls,
   WebhookRowActions,
 } from "./extras-client";
 import { loadApiKeys, loadDataAiSettings, loadSecuritySettings, loadWebhooks } from "./load";
@@ -203,6 +204,23 @@ export async function DataAiSettingsPage({ ctx }: { ctx: OrgContext }) {
         ) : (
           <span className="text-[12px] text-muted">Only the owner or an admin can export.</span>
         )}
+      </section>
+
+      <section className="flex flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5">
+        <div>
+          <h2 className="m-0 text-[14px] font-semibold text-ink">Scheduled automations</h2>
+          <p className="m-0 mt-1 text-[12.5px] text-muted">
+            Unattended daily cron job (<code className="num text-[12px]">/api/cron/run-due</code>) for recurring
+            invoices, recurring bills, monthly depreciation, and auto-post prepaid schedules.
+          </p>
+        </div>
+        <ScheduledAutomationsControls
+          orgSlug={ctx.org.slug}
+          initialEnabled={data.autoRunEnabled}
+          runs={data.automationRuns}
+          canAdmin={canAdmin}
+          canRun={ctx.role !== "viewer"}
+        />
       </section>
 
       <section className="flex flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-5">

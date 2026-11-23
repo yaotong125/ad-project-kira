@@ -13,12 +13,14 @@ import {
   deleteOrganizationAction,
   deleteWebhookAction,
   revokeApiKeyAction,
+  runOrgAutomationsNowAction,
   saveLanguageAction,
   setAiMemoryAction,
+  setAutoRunEnabledAction,
   setRequireMfaAction,
   toggleWebhookAction,
 } from "./actions";
-import { WEBHOOK_EVENTS, type ApiKeyScope } from "./types";
+import { WEBHOOK_EVENTS, type ApiKeyScope, type AutomationRunRow } from "./types";
 
 export function CreateApiKeyForm({ orgSlug }: { orgSlug: string }) {
   const router = useRouter();
@@ -553,6 +555,143 @@ export function MfaEnforcementToggle({
         </Button>
       ) : (
         <span className="chip">{required ? "Required" : "Optional"}</span>
+      )}
+    </div>
+  );
+}
+
+export function ScheduledAutomationsControls({
+  orgSlug,
+  initialEnabled,
+  runs,
+  canAdmin,
+  canRun,
+}: {
+  orgSlug: string;
+  initialEnabled: boolean;
+  runs: AutomationRunRow[];
+  canAdmin: boolean;
+  canRun: boolean;
+}) {
+  const router = useRouter();
+  const [enabled, setEnabled] = useState(initialEnabled);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [pending, start] = useTransition();
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <div className="text-[13px] font-medium text-ink">Daily background run (01:00 MYT)</div>
+          <div className="text-[12px] text-muted">
+            {enabled
+              ? "On · Automatically posts due recurring invoices, recurring bills, monthly depreciation, and auto-post prepaids."
+              : "Paused · Scheduled cron skips this organisation until you turn it back on."}
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {canRun && (
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              disabled={pending}
+              onClick={() => {
+                setMsg(null);
+                setErr(null);
+                start(async () => {
+                  const r = await runOrgAutomationsNowAction(orgSlug);
+                  if (r.ok) {
+                    setMsg(
+                      `Ran automations: ${r.invoicesGenerated} invoice${r.invoicesGenerated === 1 ? "" : "s"}, ${r.billsGenerated} bill${r.billsGenerated === 1 ? "" : "s"}, ${r.depreciationPosted} depreciation, ${r.prepaidsPosted} prepaid posted.`,
+                    );
+                    router.refresh();
+                  } else {
+                    setErr(r.error);
+                  }
+                });
+              }}
+            >
+              {pending ? "Running..." : "Run due now"}
+            </Button>
+          )}
+          {canAdmin ? (
+            <Button
+              type="button"
+              size="sm"
+              variant="ghost"
+              disabled={pending}
+              onClick={() => {
+                const next = !enabled;
+                setMsg(null);
+                setErr(null);
+                start(async () => {
+                  const r = await setAutoRunEnabledAction(orgSlug, next);
+                  if (r.ok) {
+                    setEnabled(next);
+                    setMsg(next ? "Daily scheduled automations turned on." : "Daily scheduled automations paused.");
+                    router.refresh();
+                  } else {
+                    setErr(r.error);
+                  }
+                });
+              }}
+            >
+              {enabled ? "Pause schedule" : "Turn on"}
+            </Button>
+          ) : (
+            <span className="chip">{enabled ? "Scheduled" : "Paused"}</span>
+          )}
+        </div>
+      </div>
+
+      {msg && (
+        <p role="status" data-testid="automation-status" className="m-0 text-[12.5px] font-medium text-positive">
+          {msg}
+        </p>
+      )}
+      {err && (
+        <p role="alert" className="m-0 text-[12.5px] text-negative">
+          {err}
+        </p>
+      )}
+
+      {runs.length > 0 && (
+        <div className="mt-1 overflow-x-auto rounded-[var(--radius)] border border-border">
+          <table className="w-full border-collapse text-left text-[12.5px]" data-testid="automation-runs-table">
+            <thead>
+              <tr className="bg-surface-2/60 text-[11px] font-semibold tracking-[0.04em] text-muted uppercase">
+                <th className="px-3 py-2">As of</th>
+                <th className="px-3 py-2">Trigger</th>
+                <th className="px-3 py-2 text-right">Invoices</th>
+                <th className="px-3 py-2 text-right">Bills</th>
+                <th className="px-3 py-2 text-right">Depreciation</th>
+                <th className="px-3 py-2 text-right">Prepaids</th>
+                <th className="px-3 py-2 text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {runs.map((r) => (
+                <tr key={r.id} className="border-t border-border">
+                  <td className="px-3 py-2 whitespace-nowrap num text-ink">{r.asOfDate}</td>
+                  <td className="px-3 py-2 whitespace-nowrap">
+                    <span className="chip">{r.triggerSource === "cron" ? "Cron" : "Manual"}</span>
+                  </td>
+                  <td className="px-3 py-2 text-right num text-ink">{r.invoicesGenerated}</td>
+                  <td className="px-3 py-2 text-right num text-ink">{r.billsGenerated}</td>
+                  <td className="px-3 py-2 text-right num text-ink">{r.depreciationPosted}</td>
+                  <td className="px-3 py-2 text-right num text-ink">{r.prepaidsPosted}</td>
+                  <td className="px-3 py-2 text-right whitespace-nowrap">
+                    <span className={r.status === "ok" ? "chip pos" : r.status === "partial" ? "chip warn" : "chip neg"}>
+                      {r.status === "ok" ? "OK" : r.status === "partial" ? "Partial" : "Failed"}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

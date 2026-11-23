@@ -1,6 +1,6 @@
 import "server-only";
 import type { createSupabaseServerClient } from "@/shared/supabase/server";
-import type { ApiKeyRow, ApiKeyScope, WebhookRow } from "./types";
+import type { ApiKeyRow, ApiKeyScope, AutomationRunRow, WebhookRow } from "./types";
 
 type Supabase = Awaited<ReturnType<typeof createSupabaseServerClient>>;
 
@@ -40,13 +40,33 @@ export async function loadWebhooks(supabase: Supabase, orgId: string): Promise<W
 }
 
 export async function loadDataAiSettings(supabase: Supabase, orgId: string) {
-  const [{ data: org }, { count: chatCount }] = await Promise.all([
-    supabase.from("organizations").select("ai_memory_enabled").eq("id", orgId).single(),
+  const [{ data: org }, { count: chatCount }, runsRes] = await Promise.all([
+    supabase.from("organizations").select("ai_memory_enabled, auto_run_enabled").eq("id", orgId).single(),
     supabase.from("chat_conversations").select("id", { count: "exact", head: true }).eq("org_id", orgId),
+    supabase
+      .from("org_automation_runs")
+      .select("id, trigger_source, as_of_date, invoices_generated, bills_generated, depreciation_posted, prepaids_posted, status, error_message, ran_at")
+      .eq("org_id", orgId)
+      .order("ran_at", { ascending: false })
+      .limit(10),
   ]);
+  const automationRuns: AutomationRunRow[] = (runsRes.data ?? []).map((r) => ({
+    id: r.id as string,
+    triggerSource: r.trigger_source === "cron" ? "cron" : "manual",
+    asOfDate: r.as_of_date as string,
+    invoicesGenerated: Number(r.invoices_generated ?? 0),
+    billsGenerated: Number(r.bills_generated ?? 0),
+    depreciationPosted: Number(r.depreciation_posted ?? 0),
+    prepaidsPosted: Number(r.prepaids_posted ?? 0),
+    status: r.status === "failed" ? "failed" : r.status === "partial" ? "partial" : "ok",
+    errorMessage: (r.error_message as string | null) ?? null,
+    ranAt: r.ran_at as string,
+  }));
   return {
     aiMemoryEnabled: org?.ai_memory_enabled !== false,
+    autoRunEnabled: (org as { auto_run_enabled?: boolean } | null)?.auto_run_enabled !== false,
     chatCount: chatCount ?? 0,
+    automationRuns,
   };
 }
 

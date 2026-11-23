@@ -19,6 +19,19 @@ export type WebhookRow = {
   createdAt: string;
 };
 
+export type AutomationRunRow = {
+  id: string;
+  triggerSource: "cron" | "manual";
+  asOfDate: string;
+  invoicesGenerated: number;
+  billsGenerated: number;
+  depreciationPosted: number;
+  prepaidsPosted: number;
+  status: "ok" | "partial" | "failed";
+  errorMessage: string | null;
+  ranAt: string;
+};
+
 export const WEBHOOK_EVENTS = [
   { id: "invoice.recorded", label: "Invoice recorded" },
   { id: "bill.recorded", label: "Bill recorded" },

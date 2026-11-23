@@ -152,3 +152,46 @@ export async function setRequireMfaAction(orgSlug: string, required: boolean): P
   revalidatePath(`/${orgSlug}/settings/account`);
   return { ok: true };
 }
+
+export async function setAutoRunEnabledAction(
+  orgSlug: string,
+  enabled: boolean,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.rpc("set_auto_run_enabled", { p_slug: orgSlug, p_enabled: enabled });
+  if (error) return { ok: false, error: mapErr(error.message) };
+  revalidatePath(`/${orgSlug}/settings/data`);
+  return { ok: true };
+}
+
+export async function runOrgAutomationsNowAction(
+  orgSlug: string,
+): Promise<
+  | {
+      ok: true;
+      invoicesGenerated: number;
+      billsGenerated: number;
+      depreciationPosted: number;
+      prepaidsPosted: number;
+      status: string;
+    }
+  | { ok: false; error: string }
+> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.rpc("run_org_automations_now", { p_slug: orgSlug });
+  if (error) return { ok: false, error: mapErr(error.message) };
+  const res = (data ?? {}) as Record<string, unknown>;
+  revalidatePath(`/${orgSlug}/settings/data`);
+  revalidatePath(`/${orgSlug}/recurring-invoices`);
+  revalidatePath(`/${orgSlug}/recurring-bills`);
+  revalidatePath(`/${orgSlug}/fixed-assets`);
+  revalidatePath(`/${orgSlug}/prepaid-amortisations`);
+  return {
+    ok: true,
+    invoicesGenerated: Number(res.invoicesGenerated ?? 0),
+    billsGenerated: Number(res.billsGenerated ?? 0),
+    depreciationPosted: Number(res.depreciationPosted ?? 0),
+    prepaidsPosted: Number(res.prepaidsPosted ?? 0),
+    status: String(res.status ?? "ok"),
+  };
+}
